@@ -40,7 +40,7 @@ while db_not_ready:
             print('Something went wrong with the username or password')
         elif err.errno == errorcode.ER_BAD_DB_ERROR:
             print('Database does not exist')
-        elif err.errno == "2003":
+        elif err.errno == 2003:
             print('mysql server is not ready')
         elif err.errno == 1050:
             print('There is already a table with the same name')
