@@ -38,10 +38,13 @@ while db_not_ready:
     except mysql.connector.Error as err:
         if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
             print('Something went wrong with the username or password')
+            time.sleep(3)
         elif err.errno == errorcode.ER_BAD_DB_ERROR:
             print('Database does not exist')
+            time.sleep(3)
         elif err.errno == 2003:
             print('mysql server is not ready')
+            time.sleep(3)
         elif err.errno == 1050:
             print('There is already a table with the same name')
             db_not_ready = False
