@@ -3,12 +3,14 @@ services:
   trigger:
     container_name: trigger
     build: ./trigger
+    image: phonebook/trigger:latest
     depends_on: [database]
     networks: [database-net]
   webserver:
     container_name: webserver
     build: ./webserver
-    ports: [5000:5000]
+    image: phonebook/webserver:latest
+    ports: [500:5000]
     volumes: [./webserver:/app]
     depends_on: [database]
     networks:

@@ -128,4 +128,4 @@ def whole_list():
 
 if __name__ == '__main__':
     # init_phone_book_db()
-    app.run('0.0.0.0', debug = True)
+    app.run('0.0.0.0', port=5000)
