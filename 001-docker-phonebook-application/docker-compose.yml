@@ -1,0 +1,36 @@
+version: '3'
+services:
+  trigger:
+    container_name: trigger
+    build: ./trigger
+    depends_on: [database]
+    networks: [database-net]
+  webserver:
+    container_name: webserver
+    build: ./webserver
+    ports: [5000:5000]
+    volumes: [./webserver:/app]
+    depends_on: [database]
+    networks:
+      - server-net
+      - database-net
+  database:
+    container_name: mysql
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: Pas5w0rd
+      MYSQL_DATABASE: phonebook
+      MYSQL_USER: talha-01
+      MYSQL_PASSWORD: phonebook_123
+    volumes:
+      - mysql-volume:/var/lib/mysql
+    networks:
+      - database-net
+volumes:
+  mysql-volume:
+
+networks:
+  database-net:
+  server-net:
+
+      
