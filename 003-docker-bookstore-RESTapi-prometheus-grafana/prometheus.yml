@@ -1,0 +1,16 @@
+scrape_configs: 
+- job_name: prometheus
+  scrape_interval: 5s
+  static_configs: 
+  - targets: 
+    - prometheus:9090
+- job_name: docker
+  scrape_interval: 5s
+  static_configs: 
+  - targets: 
+    - 192.168.224.1:9323
+- job_name: metrics_server
+  scrape_interval: 5s
+  static_configs: 
+  - targets: 
+    - 192.168.224.1:501
